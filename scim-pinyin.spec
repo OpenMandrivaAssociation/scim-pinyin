@@ -89,8 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/scim-1.0/IMEngine/*.so
-%{_libdir}/scim-1.0/SetupUI/*.so
+%{_libdir}/scim-1.0/1.4.0/IMEngine/*.so
+%{_libdir}/scim-1.0/1.4.0/SetupUI/*.so
 
 %files -n skim-scim-pinyin
 %defattr(-,root,root)
