@@ -1,5 +1,5 @@
 %define version   0.5.91
-%define release   %mkrel 3
+%define release   %mkrel 4
 
 %define scim_version   1.4.0
 %define skim_version   1.4.2
@@ -12,7 +12,7 @@ Summary:   Chinese input module for Smart Chinese/Common Input Method platform
 Version:   %{version}
 Release:   %{release}
 Group:     System/Internationalization
-License:   GPL
+License:   GPL+
 URL:       http://www.scim-im.org
 Source0:   %{name}-%{version}.tar.bz2
 Patch1:    scim-chinese-0.4.1-fix-l10n.patch
@@ -28,9 +28,9 @@ Provides:        scim-chinese
 Obsoletes:       scim-chinese > %version
 
 %description
-SCIM is a developing platform to significant reduce the difficulty of 
-input method development. 
-
+SCIM is a platform for the development of input methods. This is the 
+Chinese Pinyin input module for SCIM. You should install it if you
+wish to enter Chinese text using the Pinyin input method.
 
 %package -n %{libname}
 Summary:    Scim-pinyin library
@@ -38,7 +38,8 @@ Group:      System/Internationalization
 Provides:   %{libname_orig} = %{version}-%{release}
 
 %description -n %{libname}
-scim-pinyin library.
+SCIM is a platform for the development of input methods. This is the 
+Chinese Pinyin input module for SCIM.
 
 %package -n skim-scim-pinyin
 Summary:    Scim-pinyin for skim
@@ -47,8 +48,10 @@ Requires:   skim >= %{skim_version}
 Requires:   %{name} = %{version}
 
 %description -n skim-scim-pinyin
-Scim-pinyin for skim.
-
+SCIM is a platform for the development of input methods. SKIM is a KDE
+front end for SCIM input. This is the Chinese Pinyin input module for
+SKIM. You should install it if you wish to enter Chinese text using
+the Pinyin input method in KDE.
 
 %prep
 %setup -q
@@ -78,22 +81,19 @@ rm -rf $RPM_BUILD_ROOT
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING README ChangeLog
+%doc AUTHORS README ChangeLog
 %{_datadir}/scim/pinyin/*
 %{_datadir}/scim/icons/*
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc COPYING
 %{_libdir}/scim-1.0/IMEngine/*.so
 %{_libdir}/scim-1.0/SetupUI/*.so
 
 %files -n skim-scim-pinyin
 %defattr(-,root,root)
-%doc COPYING
 %{_datadir}/apps/skim/pics/*.png
 %{_datadir}/config.kcfg/*.kcfg
 %{_datadir}/locale/*/LC_MESSAGES/*.mo
@@ -101,5 +101,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/*.so
 # skim load *.la file. Don't remove it.
 %{_libdir}/kde3/*.la
-
-
