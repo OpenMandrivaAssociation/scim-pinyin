@@ -20,7 +20,7 @@ Patch2:    scim-pinyin-fix_build_for_skim_support.diff
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        scim >= %{scim_version}
 Requires:        %{libname} = %{version}-%{release}
-BuildRequires:   scim-devel >= 1.4.7-3mdk
+BuildRequires:   scim-devel >= 1.4.7-4mdk
 BuildRequires:   skim-devel >= %{skim_version}
 BuildRequires:   libGConf2-devel automake libltdl-devel
 Conflicts:       libscim-chinese0
@@ -41,13 +41,13 @@ Provides:   %{libname_orig} = %{version}-%{release}
 SCIM is a platform for the development of input methods. This is the 
 Chinese Pinyin input module for SCIM.
 
-%package -n skim-scim-pinyin
+%package -n skim-%{name}
 Summary:    Scim-pinyin for skim
 Group:      System/Internationalization
 Requires:   skim >= %{skim_version}
 Requires:   %{name} = %{version}-%{release}
 
-%description -n skim-scim-pinyin
+%description -n skim-%{name}
 SCIM is a platform for the development of input methods. SKIM is a KDE
 front end for SCIM input. This is the Chinese Pinyin input module for
 SKIM. You should install it if you wish to enter Chinese text using
@@ -74,6 +74,7 @@ rm -f %{buildroot}%{scim_plugins_dir}/IMEngine/*.{a,la}
 rm -f %{buildroot}%{scim_plugins_dir}/SetupUI/*.{a,la}
 
 %find_lang %{name}
+%find_lang skim-%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -92,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %{scim_plugins_dir}/IMEngine/*.so
 %{scim_plugins_dir}/SetupUI/*.so
 
-%files -n skim-scim-pinyin
+%files -n skim-%{name} -f skim-%{name}.lang
 %defattr(-,root,root)
 %{_datadir}/apps/skim/pics/*.png
 %{_datadir}/config.kcfg/*.kcfg
