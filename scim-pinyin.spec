@@ -1,5 +1,5 @@
 %define version   0.5.91
-%define release   %mkrel 4
+%define release   %mkrel 5
 
 %define scim_version   1.4.0
 %define skim_version   1.4.2
@@ -20,12 +20,12 @@ Patch2:    scim-pinyin-fix_build_for_skim_support.diff
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        scim >= %{scim_version}
 Requires:        %{libname} = %{version}
-BuildRequires:   scim-devel >= %{scim_version}
+BuildRequires:   scim-devel >= 1.4.7-3mdk
 BuildRequires:   skim-devel >= %{skim_version}
-BuildRequires:   libGConf2-devel automake1.8 libltdl-devel
+BuildRequires:   libGConf2-devel automake libltdl-devel
 Conflicts:       libscim-chinese0
 Provides:        scim-chinese
-Obsoletes:       scim-chinese > %version
+Obsoletes:       scim-chinese
 
 %description
 SCIM is a platform for the development of input methods. This is the 
@@ -70,8 +70,8 @@ rm -rf $RPM_BUILD_ROOT
 make DESTDIR=${RPM_BUILD_ROOT} install-strip 
 
 # remove unneeded files
-rm -f %{buildroot}%{_libdir}/scim-1.0/IMEngine/*.{a,la}
-rm -f %{buildroot}%{_libdir}/scim-1.0/SetupUI/*.{a,la}
+rm -f %{buildroot}%{scim_plugins_dir}/IMEngine/*.{a,la}
+rm -f %{buildroot}%{scim_plugins_dir}/SetupUI/*.{a,la}
 
 %find_lang %{name}
 
@@ -89,15 +89,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/scim-1.0/1.4.0/IMEngine/*.so
-%{_libdir}/scim-1.0/1.4.0/SetupUI/*.so
+%{scim_plugins_dir}/IMEngine/*.so
+%{scim_plugins_dir}/SetupUI/*.so
 
 %files -n skim-scim-pinyin
 %defattr(-,root,root)
 %{_datadir}/apps/skim/pics/*.png
 %{_datadir}/config.kcfg/*.kcfg
-%{_datadir}/locale/*/LC_MESSAGES/*.mo
 %{_datadir}/services/skimconfiguredialog/*.desktop
 %{_libdir}/kde3/*.so
-# skim load *.la file. Don't remove it.
 %{_libdir}/kde3/*.la
