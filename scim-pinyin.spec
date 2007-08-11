@@ -19,7 +19,7 @@ Patch1:    scim-chinese-0.4.1-fix-l10n.patch
 Patch2:    scim-pinyin-fix_build_for_skim_support.diff
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        scim >= %{scim_version}
-Requires:        %{libname} = %{version}
+Requires:        %{libname} = %{version}-%{release}
 BuildRequires:   scim-devel >= 1.4.7-3mdk
 BuildRequires:   skim-devel >= %{skim_version}
 BuildRequires:   libGConf2-devel automake libltdl-devel
@@ -45,7 +45,7 @@ Chinese Pinyin input module for SCIM.
 Summary:    Scim-pinyin for skim
 Group:      System/Internationalization
 Requires:   skim >= %{skim_version}
-Requires:   %{name} = %{version}
+Requires:   %{name} = %{version}-%{release}
 
 %description -n skim-scim-pinyin
 SCIM is a platform for the development of input methods. SKIM is a KDE
