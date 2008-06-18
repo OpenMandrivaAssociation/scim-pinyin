@@ -1,5 +1,5 @@
 %define version   0.5.91
-%define release   %mkrel 7
+%define release   %mkrel 8
 
 %define scim_version   1.4.0
 %define skim_version   1.4.2
