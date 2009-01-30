@@ -1,5 +1,5 @@
 %define version   0.5.91
-%define release   %mkrel 10
+%define release   %mkrel 11
 
 %define scim_version   1.4.0
 
@@ -17,6 +17,7 @@ Source0:   %{name}-%{version}.tar.bz2
 Patch0:	   scim-pinyin-0.5.91-gcc43.patch
 Patch1:    scim-chinese-0.4.1-fix-l10n.patch
 Patch2:    scim-pinyin-fix_build_for_skim_support.diff
+Patch3:		scim-pinyin-0.5.91-linkage.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        scim-client = %{scim_api}
 Obsoletes:        %{libname}
@@ -36,6 +37,7 @@ wish to enter Chinese text using the Pinyin input method.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p0
+%patch3 -p0
 
 %build
 %configure2_5x --disable-static
