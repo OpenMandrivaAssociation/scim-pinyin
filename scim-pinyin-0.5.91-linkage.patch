@@ -1,0 +1,110 @@
+--- src/Makefile.am~	2005-08-06 14:08:46.000000000 +0200
++++ src/Makefile.am	2009-01-30 09:54:19.000000000 +0100
+@@ -50,7 +50,7 @@
+ 
+ libpinyin_la_CFLAGS	= @SCIM_CFLAGS@
+ libpinyin_la_CXXFLAGS	= @SCIM_CFLAGS@
+-libpinyin_la_LDFLAGS	= @SCIM_LIBS@ 
++libpinyin_la_LIBADD	= @SCIM_LIBS@ 
+ 
+ moduledir		= @SCIM_MODULEDIR@/IMEngine
+ module_LTLIBRARIES	= pinyin.la
+@@ -63,11 +63,9 @@
+ pinyin_la_LDFLAGS	= -avoid-version \
+ 		     	  -rpath $(moduledir) \
+ 			  -module \
+-			  @LIBTOOL_EXPORT_OPTIONS@ \
+-			  @SCIM_LIBS@ \
+-			  @LTLIBINTL@
++			  @LIBTOOL_EXPORT_OPTIONS@
+ 
+-pinyin_la_LIBADD	= libpinyin.la
++pinyin_la_LIBADD	= libpinyin.la @SCIM_LIBS@ @LTLIBINTL@
+ 
+ if SCIM_BUILD_SETUP
+ SETUP_MODULE = pinyin-imengine-setup.la
+@@ -85,8 +83,8 @@
+ pinyin_imengine_setup_la_LDFLAGS = -avoid-version \
+ 				 -rpath $(setupmoduledir) \
+ 				 -module \
+-				 @LIBTOOL_EXPORT_OPTIONS@ \
+-				 @SCIM_LIBS@ \
++				 @LIBTOOL_EXPORT_OPTIONS@
++pinyin_imengine_setup_la_LIBADD  = @SCIM_LIBS@ \
+ 				 @SCIM_GTKUTILS_LIBS@ \
+ 			  	 @LTLIBINTL@
+ 
+@@ -98,15 +96,12 @@
+ 
+ make_pinyin_SOURCES	= make_pinyin.cpp
+ make_pinyin_CXXFLAGS	= @SCIM_CFLAGS@
+-make_pinyin_LDFLAGS	= @SCIM_LIBS@
+-make_pinyin_LDADD	= libpinyin.la
++make_pinyin_LDADD	= libpinyin.la @SCIM_LIBS@
+ 
+ make_phrase_SOURCES	= make_phrase.cpp
+ make_phrase_CXXFLAGS	= @SCIM_CFLAGS@
+-make_phrase_LDFLAGS	= @SCIM_LIBS@
+-make_phrase_LDADD	= libpinyin.la
++make_phrase_LDADD	= libpinyin.la @SCIM_LIBS@
+ 
+ make_pinyin_phrase_SOURCES	= make_pinyin_phrase.cpp
+ make_pinyin_phrase_CXXFLAGS	= @SCIM_CFLAGS@
+-make_pinyin_phrase_LDFLAGS	= @SCIM_LIBS@
+-make_pinyin_phrase_LDADD	= libpinyin.la
++make_pinyin_phrase_LDADD	= libpinyin.la @SCIM_LIBS@
+--- src/Makefile.in~	2005-08-12 02:04:33.000000000 +0200
++++ src/Makefile.in	2009-01-30 10:06:22.000000000 +0100
+@@ -327,7 +327,7 @@
+ 
+ libpinyin_la_CFLAGS = @SCIM_CFLAGS@
+ libpinyin_la_CXXFLAGS = @SCIM_CFLAGS@
+-libpinyin_la_LDFLAGS = @SCIM_LIBS@ 
++libpinyin_la_LIBADD = @SCIM_LIBS@ 
+ moduledir = @SCIM_MODULEDIR@/IMEngine
+ module_LTLIBRARIES = pinyin.la
+ pinyin_la_SOURCES = scim_pinyin_imengine.cpp
+@@ -336,11 +336,9 @@
+ pinyin_la_LDFLAGS = -avoid-version \
+ 		     	  -rpath $(moduledir) \
+ 			  -module \
+-			  @LIBTOOL_EXPORT_OPTIONS@ \
+-			  @SCIM_LIBS@ \
+-			  @LTLIBINTL@
++			  @LIBTOOL_EXPORT_OPTIONS@
+ 
+-pinyin_la_LIBADD = libpinyin.la
++pinyin_la_LIBADD = libpinyin.la @SCIM_LIBS@ @LTLIBINTL@
+ @SCIM_BUILD_SETUP_TRUE@SETUP_MODULE = pinyin-imengine-setup.la
+ setupmoduledir = @SCIM_MODULEDIR@/SetupUI
+ setupmodule_LTLIBRARIES = $(SETUP_MODULE)
+@@ -350,24 +348,21 @@
+ pinyin_imengine_setup_la_LDFLAGS = -avoid-version \
+ 				 -rpath $(setupmoduledir) \
+ 				 -module \
+-				 @LIBTOOL_EXPORT_OPTIONS@ \
+-				 @SCIM_LIBS@ \
++				 @LIBTOOL_EXPORT_OPTIONS@
++pinyin_imengine_setup_la_LIBADD = @SCIM_LIBS@ \
+ 				 @SCIM_GTKUTILS_LIBS@ \
+ 			  	 @LTLIBINTL@
+ 
+ @ENABLE_TOOLS_TRUE@TOOLS = make-pinyin make-phrase make-pinyin-phrase
+ make_pinyin_SOURCES = make_pinyin.cpp
+ make_pinyin_CXXFLAGS = @SCIM_CFLAGS@
+-make_pinyin_LDFLAGS = @SCIM_LIBS@
+-make_pinyin_LDADD = libpinyin.la
++make_pinyin_LDADD = libpinyin.la @SCIM_LIBS@
+ make_phrase_SOURCES = make_phrase.cpp
+ make_phrase_CXXFLAGS = @SCIM_CFLAGS@
+-make_phrase_LDFLAGS = @SCIM_LIBS@
+-make_phrase_LDADD = libpinyin.la
++make_phrase_LDADD = libpinyin.la @SCIM_LIBS@
+ make_pinyin_phrase_SOURCES = make_pinyin_phrase.cpp
+ make_pinyin_phrase_CXXFLAGS = @SCIM_CFLAGS@
+-make_pinyin_phrase_LDFLAGS = @SCIM_LIBS@
+-make_pinyin_phrase_LDADD = libpinyin.la
++make_pinyin_phrase_LDADD = libpinyin.la @SCIM_LIBS@
+ all: all-am
+ 
+ .SUFFIXES:

@@ -1,0 +1,11 @@
+--- ./po/Makefile.in.in.tv	2004-08-18 21:44:42.608025960 +0200
++++ ./po/Makefile.in.in	2004-08-18 21:45:03.681328008 +0200
+@@ -59,6 +59,8 @@
+ .SUFFIXES:
+ .SUFFIXES: .po .gmo .mo .sed .sin .nop .po-create .po-update
+ 
++build: $(GMOFILES)
++
+ .po.mo:
+ 	@echo "$(MSGFMT) -c -o $@ $<"; \
+ 	$(MSGFMT) -c -o t-$@ $< && mv t-$@ $@

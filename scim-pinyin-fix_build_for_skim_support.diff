@@ -1,0 +1,22 @@
+--- skim/setupui/smartpinyinui.ui	2005-03-24 03:45:03.000000000 +0900
++++ skim/setupui/smartpinyinui.ui.new	2006-08-04 11:47:23.376159750 +0900
+@@ -864,19 +864,12 @@
+ </tabstops>
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+     <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+     <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+     <includehint>klineedit.h</includehint>
+     <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+     <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+     <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+     <includehint>klineedit.h</includehint>
+ </includehints>
+ </UI>
