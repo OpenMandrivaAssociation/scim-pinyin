@@ -1,7 +1,7 @@
 Summary:	Chinese input module for Smart Chinese/Common Input Method platform
 Name:		scim-pinyin
 Version:	0.5.92
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Internationalization
 Url:		http://www.scim-im.org
