@@ -4,7 +4,7 @@ Version:	0.5.92
 Release:	2
 License:	GPLv2+
 Group:		System/Internationalization
-Url:		http://www.scim-im.org
+Url:		https://www.scim-im.org
 Source0:	http://dl.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-pinyin-showallkeys.patch
 Patch1:		scim-pinyin-0.5.91-save-in-temp.patch
