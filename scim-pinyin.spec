@@ -10,6 +10,11 @@ Patch0:		scim-pinyin-showallkeys.patch
 Patch1:		scim-pinyin-0.5.91-save-in-temp.patch
 Patch2:		scim-pinyin-0.5.91-fix-load.patch
 Patch3:		scim-pinyin-0.5.91-fix-ms-shuangpin.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(scim)
